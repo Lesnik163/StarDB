@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import './people-page.css'
 import ItemList from '../item-list'
-import PersonDetails from '../person-details'
+import ItemDetails from '../item-details'
 import ErrorIndicator from '../error-indicator/error-indicator'
 import SwapiService from '../../services/swapi-service'
-import ErrorBoundary from '../error-boundary/error-boundary'
+import ErrorBoundary from '../error-boundary'
 
 const Row = ({left, right}) => {
     return (
@@ -22,8 +22,7 @@ const Row = ({left, right}) => {
 export default class PeoplePage extends Component {
     swapiService = new SwapiService()
     state = {
-        selectedPerson: 1,
-        // hasError: false
+        selectedPerson: 11,
     }
     componentDidCatch(){
       this.setState({
@@ -48,7 +47,7 @@ export default class PeoplePage extends Component {
     )
     const personDetails = (
         <ErrorBoundary>
-            <PersonDetails personId={this.state.selectedPerson}/>
+            <ItemDetails itemId={this.state.selectedPerson}/>
         </ErrorBoundary>
             )
     return(
@@ -56,4 +55,4 @@ export default class PeoplePage extends Component {
     )
   }
 }
-
+export {Row}
